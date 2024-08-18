@@ -1,0 +1,4 @@
+config BR2_PACKAGE_OPENSPOT
+    bool "OpenSpot"
+    help
+      OpenSpot is a C++ application that for now only prints on startup.
