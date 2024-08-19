@@ -1,5 +1,5 @@
 menu "OpenSpot Packages"
 
-source "package/main/Config.in"
+source "$BR2_EXTERNAL_openspot_PATH/package/main/Config.in"
 
 endmenu
