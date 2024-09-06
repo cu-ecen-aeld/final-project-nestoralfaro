@@ -1,14 +1,16 @@
-MAIN_VERSION = e041873055299464dd718ee3b5e2e8a317d80095
+MAIN_VERSION = b000661c969532c68d4dbe20ec86677f76232988
 MAIN_SITE = git@github.com:nestoralfaro/final-project-assignment-nestoralfaro.git
 MAIN_SITE_METHOD = git
 
+MYBIN = openspot
 define MAIN_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) all
+	$(TARGET_CXX) $(@D)/main.cpp -o $(@D)/$(MYBIN) \
+		-I$(STAGING_DIR)/usr/include/opencv4/ \
+		-L$(STAGING_DIR)/usr/lib/ -lopencv_core -lopencv_imgproc -lopencv_videoio
 endef
 
 define MAIN_INSTALL_TARGET_CMDS
-	$(INSTALL) -m 0755 $(@D)/openspot $(TARGET_DIR)/usr/bin
-	$(INSTALL) -m 0755 $(@D)/openspot/openspot-start-stop.sh $(TARGET_DIR)/etc/init.d/S99openspot
+	$(INSTALL) -m 0755 $(@D)/$(MYBIN) $(TARGET_DIR)/usr/bin/$(MYBIN)
 endef
 
 $(eval $(generic-package))
