@@ -6,6 +6,7 @@ echo "running S98 script; rotating screen"
 echo 1 | tee /sys/class/graphics/fbcon/rotate
 
 echo "running openspot binary"
+openspot -d
 # openspot
 
 # case "$1" in
