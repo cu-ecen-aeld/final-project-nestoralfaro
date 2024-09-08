@@ -1,0 +1,16 @@
+#!/bin/sh
+# rotate screen on startup (due to rotated monitor)
+# author: Nestor Alfaro
+
+echo "running S99 script; rotating screen"
+echo 1 | tee /sys/class/graphics/fbcon/rotate
+
+if ping -c 8.8.8.8 >/dev/null 2>&1; then
+	echo "Network seems up, starting NTP sync."
+	ntpd -q -g
+else
+	echo "No network available, skipping NTP sync."
+fi
+
+echo "starting openspot as daemon, with the camera as default, but without email notifications (because I don't want google getting onto me for too many emails through their servers, even though it's just emailing itself lol-jk, i get it, it's free and sometimes ygwypf)."
+openspot -c -d
